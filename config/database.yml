@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: doorg_dev
+
+test:
+  <<: *default
+  database: doorg_test
+
+production:
+  <<: *default
+  database: doorg_prod
