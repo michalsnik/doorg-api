@@ -7,10 +7,7 @@ Doorkeeper.configure do
   use_refresh_token
 
   resource_owner_from_credentials do |routes|
-    email = request.params[:username]
-    password = request.params[:password]
-    user = User.find_by(email: email)
-    user
+    User.authenticate(params[:username], params[:password])
   end
 
 # resource_owner_authenticator do

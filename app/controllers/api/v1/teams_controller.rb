@@ -10,6 +10,12 @@ module Api
       def index
         render json: serialize_collection(TeamResource, current_user.teams)
       end
+
+      def create
+        user_relation = { type: "users", id: current_user.id }
+        params[:data][:relationships][:users][:data] << user_relation
+        super
+      end
     end
 
   end
